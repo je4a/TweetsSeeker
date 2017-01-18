@@ -1,7 +1,6 @@
 package com.tweetsseeker;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +16,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-
-/**
- * Created by yevgenderkach on 1/16/17.
- */
 
 public class TweetsListPresenter implements TweetsListContract.Presenter {
     private final AccessToken accessToken = new AccessToken(BuildConfig.ACCESS_TOKEN, BuildConfig.ACCESS_TOKEN_SECRET);
