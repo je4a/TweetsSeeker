@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+def properties = new Properties()
+properties.load(project.rootProject.file('twitter4j.properties').newDataInputStream())
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.tweetsseeker"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors {
+        dev {
+            buildConfigField 'String', 'CONSUMER_KEY', properties.getProperty('consumerKey')
+            buildConfigField 'String', 'CONSUMER_SECRET', properties.getProperty('consumerSecret')
+            buildConfigField 'String', 'ACCESS_TOKEN', properties.getProperty('accessToken')
+            buildConfigField 'String', 'ACCESS_TOKEN_SECRET', properties.getProperty('accessTokenSecret')
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
+
+    compile 'org.twitter4j:twitter4j:4.0.4'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+}

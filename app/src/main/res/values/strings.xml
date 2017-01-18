@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TweetsSeeker</string>
+    <string name="search_hint">Keyword or hashtag</string>
+    <string name="tweet_text_format">%1$s\n%2$s</string>
+</resources>
