@@ -56,7 +56,6 @@ public class TweetsListPresenter implements TweetsListContract.Presenter {
                     subscriber.onNext(tweets);
                 } catch (TwitterException e) {
                     subscriber.onError(e);
-                    subscriber.onCompleted();
                 }
             })
             .subscribeOn(Schedulers.io())
